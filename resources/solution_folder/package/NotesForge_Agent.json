@@ -1,0 +1,23 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "NotesForge Agent",
+    "kind": "package",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "7e2a721a-f23d-4850-a17a-cea5083e9ee0",
+    "isOverridable": true,
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "name": "NotesForge Agent"
+    },
+    "locks": [],
+    "key": "4d1281d1-b775-4c83-a68a-f39017139858",
+    "files": []
+  }
+}

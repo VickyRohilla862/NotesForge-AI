@@ -1,0 +1,41 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "NotesForge Agent",
+    "kind": "process",
+    "type": "agent",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "7e2a721a-f23d-4850-a17a-cea5083e9ee0",
+    "isOverridable": true,
+    "dependencies": [
+      {
+        "kind": "package",
+        "name": "NotesForge Agent"
+      }
+    ],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "type": "Agent",
+      "name": "NotesForge Agent",
+      "package": {
+        "key": "4d1281d1-b775-4c83-a68a-f39017139858"
+      },
+      "targetFrameworkValue": "Portable",
+      "retentionAction": "Delete",
+      "retentionPeriod": 30,
+      "staleRetentionAction": "Delete",
+      "staleRetentionPeriod": 180,
+      "entryPoints": "{\n  \"$schema\": \"https://cloud.uipath.com/draft/2024-12/entry-point\",\n  \"$id\": \"entry-points.json\",\n  \"entryPoints\": [\n    {\n      \"filePath\": \"/content/agent.json\",\n      \"uniqueId\": \"9bbf6448-418b-4b18-ae50-bfe14ff023d4\",\n      \"type\": \"agent\",\n      \"input\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"documents\": {\n            \"type\": \"array\",\n            \"description\": \"PDFs and images supplied for this run.\",\n            \"items\": {\n              \"$ref\": \"#/definitions/job-attachment\"\n            }\n          },\n          \"notesStyle\": {\n            \"type\": \"string\",\n            \"description\": \"Notes style: study, executive, or meeting.\",\n            \"enum\": [\n              \"study\",\n              \"executive\",\n              \"meeting\"\n            ],\n            \"default\": \"study\"\n          },\n          \"detailLevel\": {\n            \"type\": \"string\",\n            \"description\": \"Requested detail level.\",\n            \"enum\": [\n              \"brief\",\n              \"standard\",\n              \"detailed\"\n            ],\n            \"default\": \"standard\"\n          },\n          \"outputLanguage\": {\n            \"type\": \"string\",\n            \"description\": \"Requested output language.\",\n            \"default\": \"English\"\n          },\n          \"includePageReferences\": {\n            \"type\": \"boolean\",\n            \"description\": \"Include page references when supported by the source.\",\n            \"default\": true\n          }\n        },\n        \"required\": [\n          \"documents\"\n        ],\n        \"definitions\": {\n          \"job-attachment\": {\n            \"type\": \"object\",\n            \"properties\": {\n              \"ID\": {\n                \"type\": \"string\",\n                \"description\": \"Orchestrator attachment key\"\n              },\n              \"FullName\": {\n                \"type\": \"string\",\n                \"description\": \"File name\"\n              },\n              \"MimeType\": {\n                \"type\": \"string\",\n                \"description\": \"MIME type, e.g. application/pdf or image/png\"\n              },\n              \"Metadata\": {\n                \"type\": \"object\",\n                \"description\": \"Dictionary<string, string> of metadata\",\n                \"additionalProperties\": {\n                  \"type\": \"string\"\n                }\n              }\n            },\n            \"required\": [\n              \"ID\"\n            ],\n            \"x-uipath-resource-kind\": \"JobAttachment\"\n          }\n        }\n      },\n      \"output\": {\n        \"type\": \"object\",\n        \"properties\": {}\n      }\n    }\n  ]\n}\n",
+      "entryPointName": "/content/agent.json",
+      "entryPointUniqueId": "9bbf6448-418b-4b18-ae50-bfe14ff023d4"
+    },
+    "locks": [],
+    "key": "47d3868f-19f4-4562-a39f-b3cf10b83655",
+    "files": []
+  }
+}

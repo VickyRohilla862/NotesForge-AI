@@ -1,0 +1,42 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "NotesForge Processing Worker",
+    "kind": "process",
+    "type": "agent",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "3a61daa6-8cb7-49f5-89fe-e6bc87a8f10f",
+    "isOverridable": true,
+    "dependencies": [
+      {
+        "kind": "package",
+        "name": "NotesForge Processing Worker"
+      }
+    ],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "type": "Agent",
+      "name": "NotesForge Processing Worker",
+      "package": {
+        "key": "53d341b0-50a7-4f54-84b7-c7645acc0797"
+      },
+      "packageName": "NotesForge.AI.agent.NotesForge.Processing.Worker",
+      "targetFrameworkValue": "Portable",
+      "retentionAction": "Delete",
+      "retentionPeriod": 30,
+      "staleRetentionAction": "Delete",
+      "staleRetentionPeriod": 180,
+      "entryPoints": "{\n  \"$schema\": \"https://cloud.uipath.com/draft/2024-12/entry-point\",\n  \"$id\": \"entry-points.json\",\n  \"entryPoints\": [\n    {\n      \"filePath\": \"/content/agent.json\",\n      \"uniqueId\": \"168fae3d-4042-4abb-ae54-0d640d56c19d\",\n      \"type\": \"agent\",\n      \"input\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"documents\": {\n            \"type\": \"array\",\n            \"description\": \"PDFs and images supplied for this run.\",\n            \"items\": {\n              \"$ref\": \"#/definitions/job-attachment\"\n            }\n          },\n          \"notesStyle\": {\n            \"type\": \"string\",\n            \"description\": \"Notes style: study, executive, or meeting.\",\n            \"enum\": [\n              \"study\",\n              \"executive\",\n              \"meeting\"\n            ],\n            \"default\": \"study\"\n          },\n          \"detailLevel\": {\n            \"type\": \"string\",\n            \"description\": \"Requested detail level.\",\n            \"enum\": [\n              \"brief\",\n              \"standard\",\n              \"detailed\"\n            ],\n            \"default\": \"standard\"\n          },\n          \"outputLanguage\": {\n            \"type\": \"string\",\n            \"description\": \"Requested output language.\",\n            \"default\": \"English\"\n          },\n          \"includePageReferences\": {\n            \"type\": \"boolean\",\n            \"description\": \"Include page references when supported by the source.\",\n            \"default\": true\n          }\n        },\n        \"required\": [\n          \"documents\"\n        ],\n        \"definitions\": {\n          \"job-attachment\": {\n            \"type\": \"object\",\n            \"properties\": {\n              \"ID\": {\n                \"type\": \"string\",\n                \"description\": \"Orchestrator attachment key\"\n              },\n              \"FullName\": {\n                \"type\": \"string\",\n                \"description\": \"File name\"\n              },\n              \"MimeType\": {\n                \"type\": \"string\",\n                \"description\": \"MIME type, e.g. application/pdf or image/png\"\n              },\n              \"Metadata\": {\n                \"type\": \"object\",\n                \"description\": \"Dictionary<string, string> of metadata\",\n                \"additionalProperties\": {\n                  \"type\": \"string\"\n                }\n              }\n            },\n            \"required\": [\n              \"ID\"\n            ],\n            \"x-uipath-resource-kind\": \"JobAttachment\"\n          }\n        }\n      },\n      \"output\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"notesUsable\": {\n            \"type\": \"boolean\",\n            \"description\": \"Whether the supplied files produced usable notes.\"\n          },\n          \"title\": {\n            \"type\": \"string\",\n            \"description\": \"Title for the notes document.\"\n          },\n          \"overview\": {\n            \"type\": \"string\",\n            \"description\": \"Short overview of the supplied material.\"\n          },\n          \"sources\": {\n            \"type\": \"array\",\n            \"description\": \"Notes organized by source file.\",\n            \"items\": {\n              \"type\": \"object\",\n              \"properties\": {\n                \"filename\": {\n                  \"type\": \"string\"\n                },\n                \"summary\": {\n                  \"type\": \"string\"\n                },\n                \"notes\": {\n                  \"type\": \"array\",\n                  \"items\": {\n                    \"type\": \"string\"\n                  }\n                },\n                \"key_terms\": {\n                  \"type\": \"array\",\n                  \"items\": {\n                    \"type\": \"string\"\n                  }\n                },\n                \"page_references\": {\n                  \"type\": \"array\",\n                  \"items\": {\n                    \"type\": \"string\"\n                  }\n                },\n                \"uncertainties\": {\n                  \"type\": \"array\",\n                  \"items\": {\n                    \"type\": \"string\"\n                  }\n                }\n              },\n              \"required\": [\n                \"filename\",\n                \"summary\",\n                \"notes\",\n                \"key_terms\",\n                \"page_references\",\n                \"uncertainties\"\n              ]\n            }\n          },\n          \"cross_source_takeaways\": {\n            \"type\": \"array\",\n            \"items\": {\n              \"type\": \"string\"\n            }\n          },\n          \"actions_or_questions\": {\n            \"type\": \"array\",\n            \"items\": {\n              \"type\": \"string\"\n            }\n          },\n          \"limitations\": {\n            \"type\": \"array\",\n            \"items\": {\n              \"type\": \"string\"\n            }\n          }\n        }\n      }\n    }\n  ]\n}\n",
+      "entryPointName": "/content/agent.json",
+      "entryPointUniqueId": "168fae3d-4042-4abb-ae54-0d640d56c19d"
+    },
+    "locks": [],
+    "key": "7412c234-00f6-4223-9777-0e1387e0dcba",
+    "files": []
+  }
+}
