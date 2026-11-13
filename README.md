@@ -16,6 +16,14 @@ npm install
 npm run dev
 ```
 
+Run the API in a second terminal:
+
+```bash
+cp .env.example .env
+# Set MAESTRO_WEBHOOK_URL in .env
+npm run dev:api
+```
+
 Validation:
 
 ```bash
@@ -25,7 +33,7 @@ npm run lint
 
 ## Maestro integration contract
 
-The next integration step is a server-side endpoint or Maestro trigger that accepts:
+The server endpoint now accepts the request and forwards it to the configured Maestro trigger:
 
 ```json
 {
@@ -36,7 +44,7 @@ The next integration step is a server-side endpoint or Maestro trigger that acce
 }
 ```
 
-It should return a downloadable PDF URL (or PDF bytes) and an operation identifier. The Maestro webhook URL and authentication must be kept server-side; do not put credentials in the Vite client or commit them to GitHub.
+Maestro must return either PDF bytes (`application/pdf`) or JSON containing `pdfBase64` or `pdfUrl`. The website downloads the resulting PDF automatically. The Maestro webhook URL and authentication must be kept server-side; do not put credentials in the Vite client or commit them to GitHub.
 
 ## Product flow
 

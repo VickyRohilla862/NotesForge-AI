@@ -48,6 +48,7 @@ textarea { height: 142px; resize: vertical; padding: 14px 0; font-size: 14px; li
 .style-option .icon { width: 12px; }
 .primary-button { display: flex; align-items: center; gap: 18px; padding: 14px 17px; border: 0; color: #fff; background: #282725; font-size: 12px; font-weight: 600; }
 .primary-button:hover { background: #a08d74; }
+.primary-button:disabled { cursor: wait; opacity: .65; }
 .primary-button .icon { width: 15px; }
 .form-message { margin: 20px 0 0; font-size: 12px; }
 .form-message.error { color: #a34d3e; }

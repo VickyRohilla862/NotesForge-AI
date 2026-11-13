@@ -23,25 +23,55 @@ function App() {
   const [topic, setTopic] = useState('')
   const [content, setContent] = useState('')
   const [style, setStyle] = useState<NoteStyle>('Structured')
-  const [fileName, setFileName] = useState('')
-  const [status, setStatus] = useState<'idle' | 'ready' | 'error'>('idle')
+  const [file, setFile] = useState<File | null>(null)
+  const [status, setStatus] = useState<'idle' | 'generating' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
   const fileInput = useRef<HTMLInputElement>(null)
 
   const handleFile = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
     if (file) {
-      setFileName(file.name)
+      setFile(file)
       setStatus('idle')
+      setErrorMessage('')
     }
   }
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    if (!topic.trim() && !content.trim() && !fileName) {
+    if (!topic.trim() && !content.trim() && !file) {
       setStatus('error')
+      setErrorMessage('Add some text or choose a document before creating notes.')
       return
     }
-    setStatus('ready')
+
+    setStatus('generating')
+    setErrorMessage('')
+    const request = new FormData()
+    request.append('topic', topic)
+    request.append('content', content)
+    request.append('style', style)
+    if (file) request.append('file', file)
+
+    try {
+      const response = await fetch('/api/generate-notes', { method: 'POST', body: request })
+      if (!response.ok) {
+        const body = await response.json().catch(() => null) as { error?: string } | null
+        throw new Error(body?.error || `The notes service returned HTTP ${response.status}.`)
+      }
+
+      const pdf = await response.blob()
+      const downloadUrl = URL.createObjectURL(pdf)
+      const link = document.createElement('a')
+      link.href = downloadUrl
+      link.download = `${(topic.trim() || 'notes').replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '').toLowerCase()}.pdf`
+      link.click()
+      URL.revokeObjectURL(downloadUrl)
+      setStatus('success')
+    } catch (error) {
+      setStatus('error')
+      setErrorMessage(error instanceof Error ? error.message : 'Unable to create notes.')
+    }
   }
 
   return (
@@ -84,7 +114,7 @@ function App() {
           <input ref={fileInput} className="visually-hidden" type="file" accept=".pdf,.doc,.docx,.txt,.md" onChange={handleFile} />
           <button className="upload-zone" type="button" onClick={() => fileInput.current?.click()}>
             <span className="upload-icon"><Icon name="upload" /></span>
-            <span><strong>{fileName || 'Drop a file here or browse'}</strong><small>{fileName ? 'Ready to include in your notes' : 'PDF, DOCX, TXT, or Markdown · up to 10 MB'}</small></span>
+            <span><strong>{file?.name || 'Drop a file here or browse'}</strong><small>{file ? 'Ready to include in your notes' : 'PDF, DOCX, TXT, or Markdown · up to 10 MB'}</small></span>
             <Icon name="file" />
           </button>
 
@@ -95,10 +125,10 @@ function App() {
                 {styles.map((option) => <button className={style === option ? 'style-option active' : 'style-option'} type="button" key={option} onClick={() => setStyle(option)}>{option}{option === 'Structured' && <Icon name="check" />}</button>)}
               </div>
             </div>
-            <button className="primary-button" type="submit">Create my notes <Icon name="arrow" /></button>
+            <button className="primary-button" type="submit" disabled={status === 'generating'}>{status === 'generating' ? 'Creating notes…' : 'Create my notes'} {status !== 'generating' && <Icon name="arrow" />}</button>
           </div>
-          {status === 'error' && <p className="form-message error">Add some text or choose a document before creating notes.</p>}
-          {status === 'ready' && <p className="form-message success">Your request is ready for the Maestro workflow: <strong>{style}</strong> notes{topic ? ` on “${topic}”` : ''}.</p>}
+          {status === 'error' && <p className="form-message error">{errorMessage}</p>}
+          {status === 'success' && <p className="form-message success">Your PDF is ready and downloading.</p>}
         </form>
       </section>
 
