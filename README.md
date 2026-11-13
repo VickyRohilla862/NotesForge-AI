@@ -44,7 +44,7 @@ The server endpoint now accepts the request and forwards it to the configured Ma
 }
 ```
 
-Maestro must return either PDF bytes (`application/pdf`) or JSON containing `pdfBase64` or `pdfUrl`. The website downloads the resulting PDF automatically. The Maestro webhook URL and authentication must be kept server-side; do not put credentials in the Vite client or commit them to GitHub.
+For a synchronous prototype, Maestro must return either PDF bytes (`application/pdf`) or JSON containing `pdfBase64` or `pdfUrl`. The website downloads the resulting PDF automatically. A Maestro HTTP Webhook trigger normally starts a run asynchronously, so a production version should instead have the workflow upload the PDF and call a callback endpoint, or expose a status/download endpoint that the website can poll. The webhook URL and authentication must be kept server-side; do not put credentials in the Vite client or commit them to GitHub.
 
 ## Product flow
 

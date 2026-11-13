@@ -28,7 +28,9 @@ app.post('/api/generate-notes', upload.single('file'), async (request, response)
     }
 
     const headers = {}
-    if (process.env.MAESTRO_API_KEY) headers.Authorization = `Bearer ${process.env.MAESTRO_API_KEY}`
+    if (process.env.MAESTRO_WEBHOOK_SECRET) {
+      headers[process.env.MAESTRO_WEBHOOK_HEADER || 'X-NotesForge-Key'] = process.env.MAESTRO_WEBHOOK_SECRET
+    }
     const maestroResponse = await fetch(maestroUrl, { method: 'POST', headers, body: payload })
     if (!maestroResponse.ok) {
       const details = await maestroResponse.text()
