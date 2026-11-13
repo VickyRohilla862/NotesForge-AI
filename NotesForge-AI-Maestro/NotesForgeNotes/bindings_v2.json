@@ -1,0 +1,24 @@
+{
+  "version": "2.0",
+  "resources": [
+    {
+      "resource": "connection",
+      "key": "notesforgeWebhook",
+      "id": "connectionnotesforgeWebhook",
+      "value": {
+        "ConnectionId": {
+          "defaultValue": "notesforgeWebhook",
+          "isExpression": false,
+          "displayName": "uipath-http-webhook connection"
+        }
+      },
+      "metadata": {
+        "ActivityName": "HTTP Webhook",
+        "BindingsVersion": "2.2",
+        "DisplayLabel": "uipath-http-webhook connection",
+        "UseConnectionService": "true",
+        "Connector": "uipath-http-webhook"
+      }
+    }
+  ]
+}

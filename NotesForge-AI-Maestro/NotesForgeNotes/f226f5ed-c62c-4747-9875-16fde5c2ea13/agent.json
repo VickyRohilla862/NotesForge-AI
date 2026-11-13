@@ -1,0 +1,89 @@
+{
+  "version": "1.2.0",
+  "settings": {
+    "model": "gpt-5.4-mini",
+    "maxTokens": 6000,
+    "temperature": 0.2,
+    "engine": "basic-v2",
+    "mode": "standard"
+  },
+  "projectId": "f226f5ed-c62c-4747-9875-16fde5c2ea13",
+  "id": "f226f5ed-c62c-4747-9875-16fde5c2ea13",
+  "name": "generateNotes",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "parseRequest__output__topic": {},
+      "parseRequest__output__content": {},
+      "parseRequest__output__style": {}
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string"
+      },
+      "summary": {
+        "type": "string"
+      },
+      "notesMarkdown": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "title",
+      "summary",
+      "notesMarkdown"
+    ]
+  },
+  "metadata": {
+    "storageVersion": "50.0.0",
+    "isConversational": false,
+    "showProjectCreationExperience": false
+  },
+  "type": "lowCode",
+  "guardrails": [],
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are NotesForge AI. Create accurate, useful study notes from the supplied material. Do not invent facts that are not supported by the material. Return a result conforming to the output schema. title: a clear title. summary: a short overview. notesMarkdown: well-structured Markdown notes with headings, key concepts, examples, and a final recap.",
+      "contentTokens": [
+        {
+          "type": "simpleText",
+          "rawString": "You are NotesForge AI. Create accurate, useful study notes from the supplied material. Do not invent facts that are not supported by the material. Return a result conforming to the output schema. title: a clear title. summary: a short overview. notesMarkdown: well-structured Markdown notes with headings, key concepts, examples, and a final recap."
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": "Create {{input.parseRequest__output__style}} notes for the topic {{input.parseRequest__output__topic}} from this material:\n\n{{input.parseRequest__output__content}}",
+      "contentTokens": [
+        {
+          "type": "simpleText",
+          "rawString": "Create "
+        },
+        {
+          "type": "variable",
+          "rawString": "input.parseRequest__output__style"
+        },
+        {
+          "type": "simpleText",
+          "rawString": " notes for the topic "
+        },
+        {
+          "type": "variable",
+          "rawString": "input.parseRequest__output__topic"
+        },
+        {
+          "type": "simpleText",
+          "rawString": " from this material:\n\n"
+        },
+        {
+          "type": "variable",
+          "rawString": "input.parseRequest__output__content"
+        }
+      ]
+    }
+  ]
+}

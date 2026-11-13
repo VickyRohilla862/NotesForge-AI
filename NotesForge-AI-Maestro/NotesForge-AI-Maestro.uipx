@@ -1,0 +1,12 @@
+{
+  "DocVersion": "1.0.0",
+  "StudioMinVersion": "2025.10.0",
+  "SolutionId": "776855d7-4ead-4311-88d3-e8f91e51f02b",
+  "Projects": [
+    {
+      "Type": "Flow",
+      "ProjectRelativePath": "NotesForgeNotes/project.uiproj",
+      "Id": "32bb0cd3-332c-4837-9c5f-9471ccdbf5e3"
+    }
+  ]
+}

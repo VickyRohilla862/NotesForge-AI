@@ -1,0 +1,38 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "NotesForgeNotes",
+    "kind": "process",
+    "type": "flow",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "32bb0cd3-332c-4837-9c5f-9471ccdbf5e3",
+    "dependencies": [
+      {
+        "kind": "package",
+        "name": "NotesForgeNotes"
+      }
+    ],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "runtimeProfile": "Standard",
+      "type": "Flow",
+      "name": "NotesForgeNotes",
+      "package": {
+        "key": "f12c112b-c563-4637-b4d5-2b421ab91ae4"
+      },
+      "targetFrameworkValue": "Portable",
+      "retentionAction": "Delete",
+      "retentionPeriod": 30,
+      "staleRetentionAction": "Delete",
+      "staleRetentionPeriod": 180
+    },
+    "locks": [],
+    "key": "d8cfb7f8-a90e-4f7e-a5e1-5cb4be7be3cc",
+    "files": []
+  }
+}

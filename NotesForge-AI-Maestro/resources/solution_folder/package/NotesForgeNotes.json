@@ -1,0 +1,22 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "NotesForgeNotes",
+    "kind": "package",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "32bb0cd3-332c-4837-9c5f-9471ccdbf5e3",
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "name": "NotesForgeNotes"
+    },
+    "locks": [],
+    "key": "f12c112b-c563-4637-b4d5-2b421ab91ae4",
+    "files": []
+  }
+}
