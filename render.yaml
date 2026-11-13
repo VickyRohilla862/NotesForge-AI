@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: notesforge-ai
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: MAESTRO_WEBHOOK_URL
+        sync: false
+      - key: MAESTRO_WEBHOOK_HEADER
+        value: X-NotesForge-Key
+      - key: MAESTRO_WEBHOOK_SECRET
+        sync: false

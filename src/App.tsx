@@ -60,13 +60,31 @@ function App() {
         throw new Error(body?.error || `The notes service returned HTTP ${response.status}.`)
       }
 
-      const pdf = await response.blob()
-      const downloadUrl = URL.createObjectURL(pdf)
+      const { jobId, statusUrl } = await response.json() as { jobId: string; statusUrl: string }
+      let downloadUrl = ''
+      for (let attempt = 0; attempt < 60; attempt += 1) {
+        await new Promise((resolve) => window.setTimeout(resolve, 2000))
+        const statusResponse = await fetch(statusUrl)
+        const status = await statusResponse.json() as { status?: string; downloadUrl?: string; error?: string }
+        if (!statusResponse.ok && statusResponse.status !== 202) {
+          throw new Error(status.error || 'The notes job failed.')
+        }
+        if (status.downloadUrl) {
+          downloadUrl = status.downloadUrl
+          break
+        }
+      }
+      if (!downloadUrl) throw new Error(`Notes job ${jobId} timed out before producing a PDF.`)
+
+      const pdfResponse = await fetch(downloadUrl)
+      if (!pdfResponse.ok) throw new Error('The PDF could not be downloaded.')
+      const pdf = await pdfResponse.blob()
+      const browserDownloadUrl = URL.createObjectURL(pdf)
       const link = document.createElement('a')
-      link.href = downloadUrl
+      link.href = browserDownloadUrl
       link.download = `${(topic.trim() || 'notes').replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '').toLowerCase()}.pdf`
       link.click()
-      URL.revokeObjectURL(downloadUrl)
+      URL.revokeObjectURL(browserDownloadUrl)
       setStatus('success')
     } catch (error) {
       setStatus('error')

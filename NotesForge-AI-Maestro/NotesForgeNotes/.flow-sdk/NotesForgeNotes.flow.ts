@@ -1,5 +1,6 @@
 import {
   flow,
+  http,
   inlineAgent,
   onEvent,
   out,
@@ -30,9 +31,19 @@ export default flow("notesforge-notes")
           topic: String(request.topic || "Untitled topic"),
           content: String(request.content || ""),
           style: String(request.style || "Structured"),
+          jobId: String(request.jobId || ""),
+          callbackUrl: String(request.callbackUrl || ""),
+          callbackToken: String(request.callbackToken || ""),
         };
       `,
-      returns: { topic: "string", content: "string", style: "string" },
+      returns: {
+        topic: "string",
+        content: "string",
+        style: "string",
+        jobId: "string",
+        callbackUrl: "string",
+        callbackToken: "string",
+      },
     }),
   )
   .step(
@@ -58,6 +69,34 @@ export default flow("notesforge-notes")
       },
       temperature: 0.2,
       maxTokenPerResponse: 6000,
+    }),
+  )
+  .step(
+    "buildCallback",
+    script({
+      code: `
+        return {
+          callbackUrl: $vars.parseRequest.output.callbackUrl,
+          body: JSON.stringify({
+            jobId: $vars.parseRequest.output.jobId,
+            callbackToken: $vars.parseRequest.output.callbackToken,
+            title: $vars.generateNotes.output.title,
+            summary: $vars.generateNotes.output.summary,
+            notesMarkdown: $vars.generateNotes.output.notesMarkdown,
+          }),
+        };
+      `,
+      returns: { callbackUrl: "string", body: "string" },
+    }),
+  )
+  .step(
+    "notifyWebsite",
+    http({
+      method: "POST",
+      url: out("buildCallback", "callbackUrl"),
+      body: out("buildCallback", "body"),
+      contentType: "application/json",
+      managed: true,
     }),
   )
   .return({

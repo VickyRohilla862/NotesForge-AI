@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "1",
+  "bindings": [
+    {
+      "id": "notesforgeWebhook",
+      "name": "notesforgeWebhook",
+      "resource": "Connection",
+      "resourceKey": "58d266a9-4aef-4dd3-849c-1cf4e5e84c3b",
+      "default": "58d266a9-4aef-4dd3-849c-1cf4e5e84c3b",
+      "propertyAttribute": "ConnectionId"
+    },
+    {
+      "id": "shared",
+      "name": "shared",
+      "resource": "Connection",
+      "resourceKey": "95a77610-fc3b-44e0-a9d9-b3b76cf538df",
+      "default": "95a77610-fc3b-44e0-a9d9-b3b76cf538df",
+      "propertyAttribute": "FolderKey"
+    }
+  ]
+}

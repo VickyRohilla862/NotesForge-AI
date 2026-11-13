@@ -1,0 +1,28 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "NotesForge AI",
+    "kind": "connection",
+    "type": "uipath-http-webhook",
+    "apiVersion": "integrationservice.uipath.com/v1",
+    "isOverridable": true,
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "connectorName": "HTTP Webhook",
+      "name": "NotesForge AI",
+      "authenticationType": "AuthenticateAfterDeployment",
+      "connectorVersion": "1.5.11",
+      "connectorKey": "uipath-http-webhook",
+      "pollingInterval": 5
+    },
+    "locks": [],
+    "key": "58d266a9-4aef-4dd3-849c-1cf4e5e84c3b",
+    "files": []
+  }
+}

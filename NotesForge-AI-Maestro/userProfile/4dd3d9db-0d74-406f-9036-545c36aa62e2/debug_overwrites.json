@@ -1,0 +1,22 @@
+{
+  "docVersion": "1.0",
+  "tenants": [
+    {
+      "tenantKey": "a95c2de9-3514-4117-ae3a-c9a5a06304dd",
+      "resources": [
+        {
+          "solutionResourceKey": "58d266a9-4aef-4dd3-849c-1cf4e5e84c3b",
+          "overwrite": {
+            "resourceKey": "58d266a9-4aef-4dd3-849c-1cf4e5e84c3b",
+            "resourceName": "NotesForge AI",
+            "type": "Reference",
+            "kind": "connection",
+            "folderFullyQualifiedName": "vaibhavrohilla862@gmail.com's workspace",
+            "folderKey": "95a77610-fc3b-44e0-a9d9-b3b76cf538df",
+            "folderPath": "16bb7b63-a648-4bea-bcc8-50593670b5bd.95a77610-fc3b-44e0-a9d9-b3b76cf538df"
+          }
+        }
+      ]
+    }
+  ]
+}

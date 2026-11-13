@@ -3,11 +3,11 @@
   "resources": [
     {
       "resource": "connection",
-      "key": "notesforgeWebhook",
-      "id": "connectionnotesforgeWebhook",
+      "key": "58d266a9-4aef-4dd3-849c-1cf4e5e84c3b",
+      "id": "connection58d266a9-4aef-4dd3-849c-1cf4e5e84c3b",
       "value": {
         "ConnectionId": {
-          "defaultValue": "notesforgeWebhook",
+          "defaultValue": "58d266a9-4aef-4dd3-849c-1cf4e5e84c3b",
           "isExpression": false,
           "displayName": "uipath-http-webhook connection"
         }

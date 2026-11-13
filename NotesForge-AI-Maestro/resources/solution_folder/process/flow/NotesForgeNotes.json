@@ -6,13 +6,92 @@
     "type": "flow",
     "apiVersion": "orchestrator.uipath.com/v1",
     "projectKey": "32bb0cd3-332c-4837-9c5f-9471ccdbf5e3",
+    "isOverridable": true,
     "dependencies": [
       {
         "kind": "package",
         "name": "NotesForgeNotes"
       }
     ],
-    "runtimeDependencies": [],
+    "runtimeDependencies": [
+      {
+        "bindingType": "connection",
+        "bindingKey": "58d266a9-4aef-4dd3-849c-1cf4e5e84c3b",
+        "bindingValues": {
+          "connectionId": {
+            "defaultValue": "58d266a9-4aef-4dd3-849c-1cf4e5e84c3b",
+            "isExpression": false
+          }
+        },
+        "bindingMetadata": {
+          "activityName": "HTTP Webhook",
+          "bindingsVersion": "2.2",
+          "connector": "uipath-http-webhook",
+          "useConnectionService": "true"
+        },
+        "resourceKind": "Connection",
+        "resourceType": "uipath-http-webhook",
+        "resourceKey": "58d266a9-4aef-4dd3-849c-1cf4e5e84c3b",
+        "resourceName": "NotesForge AI",
+        "folderKey": "95a77610-fc3b-44e0-a9d9-b3b76cf538df"
+      },
+      {
+        "bindingType": "connection",
+        "bindingKey": "",
+        "bindingValues": {
+          "connectionId": {
+            "defaultValue": "ImplicitConnection",
+            "isExpression": false
+          }
+        },
+        "bindingMetadata": {
+          "activityName": "HTTP Webhook",
+          "bindingsVersion": "2.2",
+          "connector": "uipath-http-webhook",
+          "useConnectionService": "true"
+        },
+        "resourceKind": "Connection",
+        "resourceType": "uipath-http-webhook"
+      },
+      {
+        "bindingType": "EventTrigger",
+        "bindingKey": "58d266a9-4aef-4dd3-849c-1cf4e5e84c3b_start",
+        "bindingValues": {
+          "connectionId": {
+            "defaultValue": "58d266a9-4aef-4dd3-849c-1cf4e5e84c3b",
+            "isExpression": false
+          },
+          "entryPointUniqueId": {
+            "defaultValue": "3832ea44-0101-4003-8000-3933dc8a0101",
+            "isExpression": false
+          }
+        },
+        "bindingMetadata": {
+          "activityName": "HTTP Webhook",
+          "bindingsVersion": "2.2",
+          "connector": "uipath-http-webhook",
+          "operation": "GENERIC",
+          "objectName": "HTTP_WEBHOOK",
+          "filterExpression": ""
+        },
+        "resourceKind": "Connection",
+        "resourceType": "uipath-http-webhook"
+      },
+      {
+        "bindingType": "Property",
+        "bindingKey": "GENERIC",
+        "bindingValues": {},
+        "bindingMetadata": {
+          "activityName": "HTTP Webhook",
+          "bindingsVersion": "2.2",
+          "parentResourceKey": "EventTrigger.58d266a9-4aef-4dd3-849c-1cf4e5e84c3b_start",
+          "objectName": "HTTP_WEBHOOK",
+          "triggerCreateParameters": "",
+          "overwritable": true
+        },
+        "resourceKind": "Property"
+      }
+    ],
     "folders": [
       {
         "fullyQualifiedName": "solution_folder"
