@@ -7,6 +7,17 @@
       "id": "start",
       "type": "uipath.connector.trigger.uipath-http-webhook.http-webhook",
       "typeVersion": "1.0.0",
+      "ui": {
+        "position": {
+          "x": 256,
+          "y": 144
+        },
+        "size": {
+          "width": 96,
+          "height": 96
+        },
+        "collapsed": false
+      },
       "display": {
         "label": "HTTP Webhook",
         "icon": "https://alpha.uipath.com/311c6049-4966-4ef2-a6f3-8ceccaf38d54/studio_/typecache/icons/1177fb24ca64146fbb9be417dffa2b01231e5947ab25a506cee199f7ca84dd97.svg"
@@ -130,6 +141,17 @@
       "id": "parseRequest",
       "type": "core.action.script",
       "typeVersion": "1.0.0",
+      "ui": {
+        "position": {
+          "x": 544,
+          "y": 144
+        },
+        "size": {
+          "width": 96,
+          "height": 96
+        },
+        "collapsed": false
+      },
       "display": {
         "label": "parseRequest",
         "icon": "code"
@@ -213,6 +235,17 @@
       "id": "generateNotes",
       "type": "uipath.agent.autonomous",
       "typeVersion": "1.4",
+      "ui": {
+        "position": {
+          "x": 832,
+          "y": 144
+        },
+        "size": {
+          "width": 96,
+          "height": 96
+        },
+        "collapsed": false
+      },
       "display": {
         "label": "generateNotes",
         "icon": "autonomous-agent"
@@ -324,6 +357,17 @@
       "id": "buildCallback",
       "type": "core.action.script",
       "typeVersion": "1.0.0",
+      "ui": {
+        "position": {
+          "x": 1120,
+          "y": 144
+        },
+        "size": {
+          "width": 96,
+          "height": 96
+        },
+        "collapsed": false
+      },
       "display": {
         "label": "buildCallback",
         "icon": "code"
@@ -395,6 +439,17 @@
       "id": "notifyWebsite",
       "type": "core.action.http.v2",
       "typeVersion": "2.3",
+      "ui": {
+        "position": {
+          "x": 1408,
+          "y": 144
+        },
+        "size": {
+          "width": 96,
+          "height": 96
+        },
+        "collapsed": false
+      },
       "display": {
         "label": "notifyWebsite",
         "icon": "app-window"
@@ -896,6 +951,17 @@
       "id": "end",
       "type": "core.control.end",
       "typeVersion": "1.0.0",
+      "ui": {
+        "position": {
+          "x": 1696,
+          "y": 144
+        },
+        "size": {
+          "width": 96,
+          "height": 96
+        },
+        "collapsed": false
+      },
       "display": {
         "label": "End",
         "icon": "circle-check"
@@ -2710,6 +2776,7 @@
       {
         "id": "end.title",
         "type": "string",
+        "description": "",
         "binding": {
           "nodeId": "end",
           "outputId": "title"
@@ -2718,6 +2785,7 @@
       {
         "id": "end.summary",
         "type": "string",
+        "description": "",
         "binding": {
           "nodeId": "end",
           "outputId": "summary"
@@ -2726,6 +2794,7 @@
       {
         "id": "end.notesMarkdown",
         "type": "string",
+        "description": "",
         "binding": {
           "nodeId": "end",
           "outputId": "notesMarkdown"
@@ -2734,6 +2803,7 @@
     ],
     "variableUpdates": {}
   },
+  "subflows": {},
   "bindings": [
     {
       "id": "bUipathhttpwebhookConnection",
@@ -2772,77 +2842,5 @@
     }
   ],
   "solutionId": "",
-  "projectId": "",
-  "runtime": "maestro",
-  "layout": {
-    "nodes": {
-      "start": {
-        "position": {
-          "x": 256,
-          "y": 144
-        },
-        "size": {
-          "width": 96,
-          "height": 96
-        },
-        "collapsed": false
-      },
-      "parseRequest": {
-        "position": {
-          "x": 448,
-          "y": 144
-        },
-        "size": {
-          "width": 96,
-          "height": 96
-        },
-        "collapsed": false
-      },
-      "generateNotes": {
-        "position": {
-          "x": 640,
-          "y": 128
-        },
-        "size": {
-          "width": 288,
-          "height": 96
-        },
-        "collapsed": false
-      },
-      "buildCallback": {
-        "position": {
-          "x": 1024,
-          "y": 112
-        },
-        "size": {
-          "width": 96,
-          "height": 96
-        },
-        "collapsed": false
-      },
-      "notifyWebsite": {
-        "position": {
-          "x": 1216,
-          "y": 96
-        },
-        "size": {
-          "width": 96,
-          "height": 96
-        },
-        "collapsed": false
-      },
-      "end": {
-        "position": {
-          "x": 1408,
-          "y": 80
-        },
-        "size": {
-          "width": 96,
-          "height": 96
-        },
-        "collapsed": false
-      }
-    }
-  },
-  "subflows": {}
+  "projectId": ""
 }
