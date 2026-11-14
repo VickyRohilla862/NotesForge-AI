@@ -49,7 +49,7 @@ export default flow("notesforge-notes")
   .step(
     "generateNotes",
     inlineAgent({
-      model: "gpt-4o-mini",
+      model: "gpt-4o-mini-2024-07-18",
       systemPrompt:
         "You are NotesForge AI. Create accurate, useful study notes from the supplied material. " +
         "Do not invent facts that are not supported by the material. " +
